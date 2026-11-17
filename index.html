@@ -3,1043 +3,404 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thimmarajupeta Development | 2021 – 2026 Progress Report</title>
+    <title id="page-title">Thimmarajupeta Development (2021–2026)</title>
     
-    <!-- Google Fonts: Plus Jakarta Sans, Fraunces & Noto Sans Telugu -->
+    <!-- Google Fonts: Fraunces (Editorial Serif) & Plus Jakarta Sans & Noto Sans Telugu -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Noto+Sans+Telugu:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400&family=Noto+Sans+Telugu:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Tailwind Custom Configuration -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', '"Noto Sans Telugu"', 'sans-serif'],
-                        serif: ['"Fraunces"', '"Noto Sans Telugu"', 'serif'],
-                    },
                     colors: {
-                        brand: {
-                            navy: '#0B132B',
-                            slate: '#1C2541',
-                            accent: '#D97706', // Warm Amber / Gold
-                            terracotta: '#C2410C',
-                            light: '#F8FAFC',
-                            sand: '#F3F4F6'
-                        }
+                        cream: '#F9F8F6',
+                        stoneLight: '#EFECE6',
+                        charcoal: '#1A1A1A',
+                        mutedGray: '#666666',
+                        terracotta: '#C86D51',
+                        terracottaHover: '#B25A3F',
+                        goldAccent: '#D4AF37'
+                    },
+                    fontFamily: {
+                        serif: ['Fraunces', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'Noto Sans Telugu', 'sans-serif'],
+                        telugu: ['Noto Sans Telugu', 'sans-serif']
                     }
                 }
             }
         }
     </script>
-
-    <!-- Custom CSS for Wave Animations, Glassmorphism & Smooth Reveal -->
     <style>
-        /* Telugu Typography Adjustments */
-        html[lang="te"] body {
-            line-height: 1.75;
-        }
-        html[lang="te"] h1,
-        html[lang="te"] h2,
-        html[lang="te"] h3 {
-            line-height: 1.35;
-        }
-
-        /* Multi-layered Animated SVG Wave System (Inspired by Sitaram Denims UI) */
-        .hero-wave-container {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            overflow: hidden;
-            line-height: 0;
-            z-index: 20;
-            pointer-events: none;
-        }
-
-        .waves {
-            position: relative;
-            width: 100%;
-            height: 110px;
-            min-height: 80px;
-            max-height: 150px;
-        }
-
-        .parallax > use {
-            animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
-        }
-        .parallax > use:nth-child(1) {
-            animation-delay: -2s;
-            animation-duration: 9s;
-        }
-        .parallax > use:nth-child(2) {
-            animation-delay: -3s;
-            animation-duration: 13s;
-        }
-        .parallax > use:nth-child(3) {
-            animation-delay: -4s;
-            animation-duration: 18s;
-        }
-        .parallax > use:nth-child(4) {
-            animation-delay: -5s;
-            animation-duration: 24s;
-        }
-
-        @keyframes move-forever {
-            0% {
-                transform: translate3d(-90px, 0, 0);
-            }
-            100% {
-                transform: translate3d(85px, 0, 0);
-            }
-        }
-
-        /* Responsive wave height */
-        @media (max-width: 768px) {
-            .waves {
-                height: 60px;
-                min-height: 60px;
-            }
-        }
-
-        /* Subtle Hero Background Zoom */
-        @keyframes slowZoom {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.08); }
-        }
-        .animate-slow-zoom {
-            animation: slowZoom 22s ease-in-out infinite alternate;
-        }
-
-        /* Reveal on scroll transitions */
-        .reveal {
-            opacity: 0;
-            transform: translateY(28px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0B132B;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #334155;
-            border-radius: 9999px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #D97706;
-        }
+        .font-telugu { font-family: 'Noto Sans Telugu', sans-serif; }
     </style>
 </head>
-<body class="bg-brand-light text-slate-800 antialiased selection:bg-brand-accent selection:text-white overflow-x-hidden">
+<body class="bg-cream text-charcoal font-sans antialiased selection:bg-terracotta selection:text-white">
 
-    <!-- ==================== STICKY GLASSMORPHIC NAVBAR ==================== -->
-    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4 px-4 sm:px-8">
-        <div class="max-w-7xl mx-auto flex items-center justify-between rounded-2xl px-5 py-3 transition-all duration-300 bg-brand-navy/60 backdrop-blur-md border border-white/10 shadow-lg" id="nav-container">
-            
-            <!-- Brand / Village Title -->
-            <a href="#" class="flex items-center gap-3 group">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-orange-700 flex items-center justify-center text-white font-serif font-bold text-xl shadow-md group-hover:scale-105 transition-transform">
-                    T
-                </div>
-                <div>
-                    <span data-i18n="brandTitle" class="block text-white font-bold tracking-wide text-sm sm:text-base leading-none">THIMMARAJUPETA</span>
-                    <span data-i18n="brandSubtitle" class="block text-[11px] uppercase tracking-[0.2em] text-amber-400 font-medium mt-1">Development 2021–2026</span>
-                </div>
+    <!-- Navigation Bar -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-cream/85 backdrop-blur-md border-b border-stoneLight transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="font-serif text-xl md:text-2xl font-bold tracking-tight text-charcoal">
+                Thimmarajupeta <span class="text-terracotta font-normal text-sm md:text-base ml-2">2021–2026</span>
             </a>
-
-            <!-- Desktop Navigation Links -->
-            <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-200">
-                <a href="#overview" data-i18n="navOverview" class="hover:text-amber-400 transition-colors">Overview</a>
-                <a href="#pillars" data-i18n="navPillars" class="hover:text-amber-400 transition-colors">Key Pillars</a>
-                <a href="#timeline" data-i18n="navTimeline" class="hover:text-amber-400 transition-colors">2021–2026 Timeline</a>
-                <a href="#gallery" data-i18n="navGallery" class="hover:text-amber-400 transition-colors">Project Gallery</a>
+            
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-mutedGray">
+                <a href="#overview" class="hover:text-charcoal transition-colors lang-nav-overview">Overview</a>
+                <a href="#metrics" class="hover:text-charcoal transition-colors lang-nav-impact">Impact</a>
+                <a href="#roadmap" class="hover:text-charcoal transition-colors lang-nav-roadmap">Roadmap</a>
+                <a href="#gallery" class="hover:text-charcoal transition-colors lang-nav-gallery">Gallery</a>
             </nav>
 
-            <!-- Language Toggle, CTA & Mobile Toggle -->
-            <div class="flex items-center gap-2.5 sm:gap-3">
-                <!-- Interactive Bilingual Toggle Pill (EN | తెలుగు) -->
-                <div role="group" aria-label="Language Switcher" class="inline-flex items-center p-1 rounded-xl bg-white/10 border border-white/15 backdrop-blur-md">
-                    <button type="button" data-lang-btn="en" class="lang-btn px-2.5 py-1.5 rounded-lg text-xs font-bold tracking-wide transition-all bg-amber-500 text-brand-navy shadow-sm">
-                        EN
-                    </button>
-                    <button type="button" data-lang-btn="te" class="lang-btn px-2.5 py-1.5 rounded-lg text-xs font-bold tracking-wide transition-all text-slate-200 hover:text-white">
-                        తెలుగు
-                    </button>
-                </div>
-
-                <a href="#gallery" class="hidden sm:inline-flex items-center gap-2 bg-white text-brand-navy hover:bg-amber-400 hover:text-brand-navy font-semibold text-xs uppercase tracking-wider px-4 py-2.5 rounded-xl transition-all shadow-sm">
-                    <span data-i18n="navExplore">Explore Works</span>
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                </a>
-
-                <!-- Mobile Hamburger Button -->
-                <button id="mobile-menu-btn" aria-label="Toggle Menu" class="md:hidden p-2.5 rounded-xl text-white hover:bg-white/10 transition-colors">
-                    <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
-                    <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+            <div class="flex items-center space-x-4">
+                <!-- Language Switcher Button -->
+                <button id="langToggle" onclick="toggleLanguage()" class="px-4 py-2 text-xs font-semibold uppercase tracking-wider rounded-full border border-stoneLight bg-stoneLight/50 hover:bg-stoneLight text-charcoal transition-all">
+                    తెలుగు
                 </button>
-            </div>
-        </div>
-
-        <!-- Mobile Dropdown Drawer -->
-        <div id="mobile-menu" class="hidden md:hidden max-w-7xl mx-auto mt-2 rounded-2xl bg-brand-navy/95 backdrop-blur-xl border border-white/10 p-5 shadow-2xl">
-            <div class="flex flex-col space-y-3 text-slate-200 font-medium">
-                <a href="#overview" data-i18n="mobileOverview" class="mobile-link py-2 px-3 rounded-lg hover:bg-white/10 hover:text-amber-400">Overview & Vision</a>
-                <a href="#pillars" data-i18n="mobilePillars" class="mobile-link py-2 px-3 rounded-lg hover:bg-white/10 hover:text-amber-400">Development Pillars</a>
-                <a href="#timeline" data-i18n="mobileTimeline" class="mobile-link py-2 px-3 rounded-lg hover:bg-white/10 hover:text-amber-400">2021–2026 Timeline</a>
-                <a href="#gallery" data-i18n="mobileGallery" class="mobile-link py-2 px-3 rounded-lg hover:bg-white/10 hover:text-amber-400">Visual Gallery</a>
+                <a href="#gallery" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-white bg-charcoal rounded-full hover:bg-terracotta transition-colors lang-nav-cta">
+                    Explore Visuals
+                </a>
             </div>
         </div>
     </header>
 
-    <!-- ==================== TOP HERO SECTION WITH FLUID WAVE ==================== -->
-    <section class="relative min-h-[92vh] sm:min-h-screen flex items-center justify-center bg-brand-navy text-white overflow-hidden pt-24 pb-32">
-        
-        <!-- Background Image with Slow Editorial Zoom & Dark Vignette -->
-        <div class="absolute inset-0 z-0">
-            <img 
-                src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2000&q=80" 
-                onerror="this.src='https://placehold.co/1920x1080/0B132B/FFFFFF?text=Thimmarajupeta+Transformation'"
-                alt="Thimmarajupeta Rural Landscape and Infrastructure" 
-                class="w-full h-full object-cover object-center opacity-35 animate-slow-zoom"
-            >
-            <div class="absolute inset-0 bg-gradient-to-b from-brand-navy/85 via-brand-navy/70 to-brand-navy"></div>
-            <!-- Subtle Grid Overlay for Modern Architectural Texture -->
-            <div class="absolute inset-0 bg-[radial-gradient(#ffffff12_1px,transparent_1px)] [background-size:28px_28px]"></div>
-        </div>
-
-        <!-- Hero Main Content -->
-        <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-8 text-center">
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-amber-300 text-xs font-semibold tracking-widest uppercase mb-6">
-                <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
-                <span data-i18n="heroBadge">Anakapalli District • Andhra Pradesh</span>
-            </div>
-
-            <h1 data-i18n-html="heroTitle" class="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.12] text-white mb-6">
-                Transforming <span class="italic font-normal text-amber-400">Thimmarajupeta</span><br class="hidden sm:inline">
-                Into a Model Village
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-24 md:pt-40 md:pb-32 overflow-hidden bg-cream border-b border-stoneLight">
+        <div class="max-w-5xl mx-auto px-6 text-center z-10 relative">
+            <span class="inline-block py-1.5 px-4 rounded-full bg-stoneLight text-terracotta text-xs font-semibold uppercase tracking-widest mb-6 lang-hero-tag">
+                Transformation Era • 2021–2026
+            </span>
+            <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-light tracking-tight text-charcoal mb-8 leading-[1.15]" id="hero-title">
+                The Renaissance of <span class="italic font-normal text-terracotta">Thimmarajupeta</span>
             </h1>
-
-            <p data-i18n="heroDesc" class="max-w-2xl mx-auto text-base sm:text-lg text-slate-300 font-light leading-relaxed mb-10">
-                A five-year journey (2021–2026) of modern rural infrastructure, all-weather CC roads, clean drinking water, upgraded educational spaces, and sustainable community growth.
+            <p class="max-w-2xl mx-auto text-mutedGray text-base sm:text-lg font-normal mb-10 leading-relaxed" id="hero-desc">
+                A comprehensive chronicle of rural infrastructure evolution, digital integration, and sustainable community growth spanning half a decade.
             </p>
-
-            <!-- Hero Action Buttons -->
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#gallery" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-amber-500 hover:bg-amber-400 text-brand-navy font-bold text-sm uppercase tracking-wider transition-all shadow-lg shadow-amber-500/25 flex items-center justify-center gap-2">
-                    <span data-i18n="heroCtaPrimary">View Development Gallery</span>
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                <a href="#overview" class="w-full sm:w-auto px-8 py-4 rounded-full bg-charcoal text-white text-sm font-medium hover:bg-terracotta transition-colors lang-btn-discover">
+                    Discover Journey
                 </a>
-                <a href="#timeline" data-i18n="heroCtaSecondary" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white/10 hover:bg-white/15 text-white border border-white/20 backdrop-blur-md font-semibold text-sm uppercase tracking-wider transition-all">
-                    2021–2026 Milestones
+                <a href="#gallery" class="w-full sm:w-auto px-8 py-4 rounded-full border border-stoneLight text-charcoal text-sm font-medium hover:bg-stoneLight transition-colors lang-btn-gallery">
+                    View Photo Archive
                 </a>
             </div>
         </div>
 
-        <!-- ==================== MULTI-LAYERED ANIMATED SVG WAVE (SITARAM DENIMS STYLE) ==================== -->
-        <div class="hero-wave-container">
-            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
-                <defs>
-                    <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
-                </defs>
-                <g class="parallax">
-                    <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(248, 250, 252, 0.25)" />
-                    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(248, 250, 252, 0.5)" />
-                    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(248, 250, 252, 0.75)" />
-                    <use xlink:href="#gentle-wave" x="48" y="7" fill="#F8FAFC" />
-                </g>
+        <!-- Multi-Layered Animated SVG Wave Divider (Sitaram Denims Style) -->
+        <div class="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none pointer-events-none">
+            <svg class="relative block w-full h-16 sm:h-24 md:h-32" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.08,130.83,121.61,200.58,110.6,242.06,104.05,282.5,82.16,321.39,56.44Z" fill="#EFECE6" opacity="0.6"></path>
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V120H0Z" fill="#F9F8F6"></path>
             </svg>
         </div>
     </section>
 
-    <!-- ==================== OVERVIEW & IMPACT METRICS STRIP ==================== -->
-    <section id="overview" class="py-16 sm:py-24 px-4 sm:px-8 max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center reveal">
-            
-            <!-- Left Editorial Intro -->
-            <div class="lg:col-span-6 space-y-6">
-                <span data-i18n="overviewTag" class="text-xs font-bold uppercase tracking-[0.2em] text-brand-terracotta">2021 – 2026 Vision</span>
-                <h2 data-i18n="overviewHeading" class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-navy leading-tight">
-                    Building Lasting Foundations for Every Household.
-                </h2>
-                <p data-i18n="overviewBody" class="text-slate-600 leading-relaxed text-base sm:text-lg">
-                    Between 2021 and 2026, Thimmarajupeta witnessed systematic grassroots transformation. Guided by transparent execution and community participation, key civic gaps in road connectivity, underground drainage, solar street lighting, and public school infrastructure were resolved.
-                </p>
-                <div class="pt-2 flex items-center gap-4 text-sm font-semibold text-brand-navy">
-                    <div class="w-12 h-[2px] bg-amber-500"></div>
-                    <span data-i18n="overviewNote">Progress Documented Across 5 Years</span>
-                </div>
-            </div>
-
-            <!-- Right Bento Stat Cards -->
-            <div class="lg:col-span-6 grid grid-cols-2 gap-4 sm:gap-6">
-                <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-slate-200/70 hover:shadow-md transition-shadow">
-                    <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
-                    </div>
-                    <div class="text-3xl sm:text-4xl font-bold text-brand-navy font-serif">100%</div>
-                    <p data-i18n="stat1Title" class="text-sm font-semibold text-slate-700 mt-1">Internal CC Roads</p>
-                    <p data-i18n="stat1Desc" class="text-xs text-slate-500 mt-1">All-weather concrete roads & side drains completed</p>
-                </div>
-
-                <div class="bg-brand-navy text-white p-6 sm:p-8 rounded-3xl shadow-lg">
-                    <div class="w-12 h-12 rounded-2xl bg-white/10 text-amber-400 flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                    </div>
-                    <div class="text-3xl sm:text-4xl font-bold text-amber-400 font-serif">240+</div>
-                    <p data-i18n="stat2Title" class="text-sm font-semibold text-white mt-1">LED & Solar Lights</p>
-                    <p data-i18n="stat2Desc" class="text-xs text-slate-300 mt-1">Safe, energy-efficient illumination across every street</p>
-                </div>
-
-                <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-slate-200/70 hover:shadow-md transition-shadow">
-                    <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
-                    </div>
-                    <div class="text-3xl sm:text-4xl font-bold text-brand-navy font-serif">24/7</div>
-                    <p data-i18n="stat3Title" class="text-sm font-semibold text-slate-700 mt-1">Clean Water Grid</p>
-                    <p data-i18n="stat3Desc" class="text-xs text-slate-500 mt-1">Overhead tank upgrades & household tap connections</p>
-                </div>
-
-                <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-slate-200/70 hover:shadow-md transition-shadow">
-                    <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-                    </div>
-                    <div class="text-3xl sm:text-4xl font-bold text-brand-navy font-serif">4+</div>
-                    <p data-i18n="stat4Title" class="text-sm font-semibold text-slate-700 mt-1">Public Institutions</p>
-                    <p data-i18n="stat4Desc" class="text-xs text-slate-500 mt-1">Renovated Anganwadi, ZP School & Village Secretariat</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==================== KEY DEVELOPMENT PILLARS ==================== -->
-    <section id="pillars" class="py-20 bg-white border-y border-slate-200/80">
-        <div class="max-w-7xl mx-auto px-4 sm:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
-                <span data-i18n="pillarsTag" class="text-xs font-bold uppercase tracking-[0.2em] text-brand-terracotta">Core Focus Areas</span>
-                <h2 data-i18n="pillarsHeading" class="font-serif text-3xl sm:text-4xl font-bold text-brand-navy mt-2">Pillars of Transformation</h2>
-                <p data-i18n="pillarsSub" class="text-slate-600 mt-3 text-sm sm:text-base">Targeted civic investments engineered to elevate everyday quality of life in Thimmarajupeta.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal">
-                <!-- Pillar 1 -->
-                <div class="group rounded-3xl bg-brand-light p-8 border border-slate-200/60 hover:border-amber-400 transition-all duration-300">
-                    <div data-i18n="pillar1Tag" class="text-xs font-bold text-amber-600 uppercase tracking-widest mb-3">01 / Connectivity</div>
-                    <h3 data-i18n="pillar1Title" class="font-serif text-2xl font-bold text-brand-navy mb-3 group-hover:text-brand-terracotta transition-colors">Roads & Storm Drainage</h3>
-                    <p data-i18n="pillar1Desc" class="text-slate-600 text-sm leading-relaxed">
-                        Construction of reinforced Cement Concrete (CC) internal streets, approach road widening, and covered storm-water drains to eliminate monsoon waterlogging.
-                    </p>
-                </div>
-
-                <!-- Pillar 2 -->
-                <div class="group rounded-3xl bg-brand-light p-8 border border-slate-200/60 hover:border-amber-400 transition-all duration-300">
-                    <div data-i18n="pillar2Tag" class="text-xs font-bold text-amber-600 uppercase tracking-widest mb-3">02 / Public Welfare</div>
-                    <h3 data-i18n="pillar2Title" class="font-serif text-2xl font-bold text-brand-navy mb-3 group-hover:text-brand-terracotta transition-colors">Education & Healthcare</h3>
-                    <p data-i18n="pillar2Desc" class="text-slate-600 text-sm leading-relaxed">
-                        Modernized classrooms, clean sanitation blocks, compound walls for village schools, and strengthened primary health wellness facilities for families and elders.
-                    </p>
-                </div>
-
-                <!-- Pillar 3 -->
-                <div class="group rounded-3xl bg-brand-light p-8 border border-slate-200/60 hover:border-amber-400 transition-all duration-300">
-                    <div data-i18n="pillar3Tag" class="text-xs font-bold text-amber-600 uppercase tracking-widest mb-3">03 / Sustainability</div>
-                    <h3 data-i18n="pillar3Title" class="font-serif text-2xl font-bold text-brand-navy mb-3 group-hover:text-brand-terracotta transition-colors">Water & Green Spaces</h3>
-                    <p data-i18n="pillar3Desc" class="text-slate-600 text-sm leading-relaxed">
-                        Rejuvenation of village ponds, purified RO drinking water plants, avenue plantation drives, and dedicated community gathering parks.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==================== 2021-2026 MILESTONE TIMELINE ==================== -->
-    <section id="timeline" class="py-20 sm:py-28 px-4 sm:px-8 max-w-7xl mx-auto">
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 reveal">
+    <!-- Overview Section -->
+    <section id="overview" class="py-24 px-6 bg-cream">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <div>
-                <span data-i18n="timelineTag" class="text-xs font-bold uppercase tracking-[0.2em] text-brand-terracotta">Chronicle of Growth</span>
-                <h2 data-i18n="timelineHeading" class="font-serif text-3xl sm:text-4xl font-bold text-brand-navy mt-2">2021 – 2026 Roadmap</h2>
+                <span class="text-terracotta text-xs font-semibold uppercase tracking-widest block mb-3 lang-sec1-tag">Rooted in Heritage</span>
+                <h2 class="font-serif text-3xl sm:text-4xl text-charcoal font-light mb-6 leading-tight" id="sec1-title">
+                    Building a sustainable future while honoring our foundational roots.
+                </h2>
+                <p class="text-mutedGray text-base leading-relaxed mb-6" id="sec1-desc1">
+                    Between 2021 and 2026, Thimmarajupeta underwent a transformative shift. Through collaborative community efforts, structural modernization, and enhanced connectivity, our village established a new benchmark for rural development in Andhra Pradesh.
+                </p>
+                <p class="text-mutedGray text-base leading-relaxed" id="sec1-desc2">
+                    Every initiative—from agricultural water management to digital literacy—was designed to empower the next generation while preserving our rich cultural identity.
+                </p>
             </div>
-            <p data-i18n="timelineSub" class="text-slate-600 text-sm max-w-md mt-4 md:mt-0">
-                Year-by-year execution milestones marking steady infrastructure upgrades across all wards.
-            </p>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 reveal">
-            <!-- 2021-22 -->
-            <div class="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-sm relative overflow-hidden">
-                <span class="inline-block px-3 py-1 rounded-full bg-brand-navy text-amber-400 text-xs font-bold mb-4">2021 – 2022</span>
-                <h3 data-i18n="t1Title" class="font-bold text-brand-navy text-lg mb-2">Foundation & Civic Audit</h3>
-                <p data-i18n="t1Desc" class="text-xs text-slate-600 leading-relaxed">Ward-level infrastructure mapping, initial drainage clearance, and Phase-1 LED street lighting installation.</p>
-            </div>
-
-            <!-- 2022-23 -->
-            <div class="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-sm relative overflow-hidden">
-                <span class="inline-block px-3 py-1 rounded-full bg-brand-navy text-amber-400 text-xs font-bold mb-4">2022 – 2023</span>
-                <h3 data-i18n="t2Title" class="font-bold text-brand-navy text-lg mb-2">School & Water Upgrades</h3>
-                <p data-i18n="t2Desc" class="text-xs text-slate-600 leading-relaxed">Renovation of primary school buildings, digital classroom setup, and purified RO water plant commissioning.</p>
-            </div>
-
-            <!-- 2023-24 -->
-            <div class="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-sm relative overflow-hidden">
-                <span class="inline-block px-3 py-1 rounded-full bg-brand-navy text-amber-400 text-xs font-bold mb-4">2023 – 2024</span>
-                <h3 data-i18n="t3Title" class="font-bold text-brand-navy text-lg mb-2">CC Roads Expansion</h3>
-                <p data-i18n="t3Desc" class="text-xs text-slate-600 leading-relaxed">Major laying of cement concrete roads connecting main colonies and agricultural approach pathways.</p>
-            </div>
-
-            <!-- 2024-25 -->
-            <div class="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-sm relative overflow-hidden">
-                <span class="inline-block px-3 py-1 rounded-full bg-brand-navy text-amber-400 text-xs font-bold mb-4">2024 – 2025</span>
-                <h3 data-i18n="t4Title" class="font-bold text-brand-navy text-lg mb-2">Community & Sanitation</h3>
-                <p data-i18n="t4Desc" class="text-xs text-slate-600 leading-relaxed">Solid waste management sheds, community hall beautification, and solar high-mast junction lights.</p>
-            </div>
-
-            <!-- 2025-26 -->
-            <div class="bg-brand-navy text-white rounded-3xl p-6 shadow-md relative overflow-hidden">
-                <span class="inline-block px-3 py-1 rounded-full bg-amber-500 text-brand-navy text-xs font-bold mb-4">2025 – 2026</span>
-                <h3 data-i18n="t5Title" class="font-bold text-white text-lg mb-2">Smart Village Vision</h3>
-                <p data-i18n="t5Desc" class="text-xs text-slate-300 leading-relaxed">Full-coverage tap water grid, green park corridors, and digital citizen service documentation.</p>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="p-8 bg-stoneLight/60 rounded-2xl border border-stoneLight flex flex-col justify-between">
+                    <span class="text-3xl sm:text-4xl font-serif text-charcoal font-medium">5+</span>
+                    <span class="text-xs uppercase tracking-wider text-mutedGray mt-4 lang-stat1">Years of Growth</span>
+                </div>
+                <div class="p-8 bg-stoneLight/60 rounded-2xl border border-stoneLight flex flex-col justify-between mt-6">
+                    <span class="text-3xl sm:text-4xl font-serif text-terracotta font-medium">100%</span>
+                    <span class="text-xs uppercase tracking-wider text-mutedGray mt-4 lang-stat2">Community Driven</span>
+                </div>
+                <div class="p-8 bg-stoneLight/60 rounded-2xl border border-stoneLight flex flex-col justify-between">
+                    <span class="text-3xl sm:text-4xl font-serif text-charcoal font-medium">24/7</span>
+                    <span class="text-xs uppercase tracking-wider text-mutedGray mt-4 lang-stat3">Modern Infrastructure</span>
+                </div>
+                <div class="p-8 bg-stoneLight/60 rounded-2xl border border-stoneLight flex flex-col justify-between mt-6">
+                    <span class="text-3xl sm:text-4xl font-serif text-terracotta font-medium">2026</span>
+                    <span class="text-xs uppercase tracking-wider text-mutedGray mt-4 lang-stat4">Vision Realized</span>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- ==================== INTERACTIVE FILTERABLE GALLERY SECTION (#gallery) ==================== -->
-    <section id="gallery" class="py-20 sm:py-28 bg-brand-navy text-white relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
-            
-            <!-- Gallery Header & Filter Controls -->
-            <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12 reveal">
-                <div>
-                    <span data-i18n="galleryTag" class="text-xs font-bold uppercase tracking-[0.2em] text-amber-400">Visual Documentation</span>
-                    <h2 data-i18n="galleryHeading" class="font-serif text-3xl sm:text-5xl font-bold text-white mt-2">Development Gallery</h2>
-                    <p data-i18n="gallerySub" class="text-slate-300 text-sm sm:text-base mt-2 max-w-xl">
-                        Explore completed works, infrastructure upgrades, and community milestones across Thimmarajupeta (2021–2026). Click any card to inspect details.
-                    </p>
-                </div>
+    <!-- Roadmap / Timeline Section -->
+    <section id="roadmap" class="py-24 px-6 bg-stoneLight/40 border-t border-stoneLight">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-terracotta text-xs font-semibold uppercase tracking-widest block mb-3 lang-roadmap-tag">Chronological Progress</span>
+                <h2 class="font-serif text-3xl sm:text-4xl text-charcoal font-light" id="roadmap-title">The 2021–2026 Milestone Timeline</h2>
+            </div>
 
-                <!-- Category Filter Pills -->
-                <div class="flex flex-wrap gap-2" id="gallery-filters">
-                    <button data-filter="all" data-i18n="filterAll" class="filter-btn active px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-amber-500 text-brand-navy transition-all">
-                        All Works
-                    </button>
-                    <button data-filter="roads" data-i18n="filterRoads" class="filter-btn px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-white/10 text-slate-200 hover:bg-white/20 transition-all">
-                        Roads & Drainage
-                    </button>
-                    <button data-filter="education" data-i18n="filterEdu" class="filter-btn px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-white/10 text-slate-200 hover:bg-white/20 transition-all">
-                        Schools & Civic
-                    </button>
-                    <button data-filter="water" data-i18n="filterWater" class="filter-btn px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-white/10 text-slate-200 hover:bg-white/20 transition-all">
-                        Water & Green
-                    </button>
+            <div class="space-y-8">
+                <!-- 2021 -->
+                <div class="p-8 bg-cream rounded-2xl border border-stoneLight shadow-sm transition-all hover:border-terracotta/40">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="px-3 py-1 bg-stoneLight text-charcoal text-xs font-semibold rounded-full">2021</span>
+                        <span class="text-xs text-mutedGray uppercase tracking-wider lang-phase1">Phase One</span>
+                    </div>
+                    <h3 class="font-serif text-xl font-medium text-charcoal mb-2 lang-rm1-title">Foundational Planning & Drainage Systems</h3>
+                    <p class="text-mutedGray text-sm leading-relaxed lang-rm1-desc">Initiated comprehensive village surveys, established primary sanitation blueprints, and laid underground drainage pipelines across key residential sectors.</p>
+                </div>
+                <!-- 2023 -->
+                <div class="p-8 bg-cream rounded-2xl border border-stoneLight shadow-sm transition-all hover:border-terracotta/40">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="px-3 py-1 bg-stoneLight text-charcoal text-xs font-semibold rounded-full">2023</span>
+                        <span class="text-xs text-mutedGray uppercase tracking-wider lang-phase2">Phase Two</span>
+                    </div>
+                    <h3 class="font-serif text-xl font-medium text-charcoal mb-2 lang-rm2-title">Road Connectivity & Green Canopy</h3>
+                    <p class="text-mutedGray text-sm leading-relaxed lang-rm2-desc">Upgraded dirt pathways into reinforced concrete all-weather roads and launched a massive tree-planting drive along main thoroughfares.</p>
+                </div>
+                <!-- 2026 -->
+                <div class="p-8 bg-cream rounded-2xl border border-stoneLight shadow-sm transition-all hover:border-terracotta/40">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="px-3 py-1 bg-terracotta/10 text-terracotta text-xs font-semibold rounded-full">2026</span>
+                        <span class="text-xs text-mutedGray uppercase tracking-wider lang-phase3">Phase Three</span>
+                    </div>
+                    <h3 class="font-serif text-xl font-medium text-charcoal mb-2 lang-rm3-title">Digital Integration & Sustainable Future</h3>
+                    <p class="text-mutedGray text-sm leading-relaxed lang-rm3-desc">Completed solar street lighting installation, deployed high-speed public Wi-Fi zones, and finalized digital documentation for community welfare programs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-24 px-6 bg-cream">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-terracotta text-xs font-semibold uppercase tracking-widest block mb-3 lang-gallery-tag">Visual Archives</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl text-charcoal font-light" id="gallery-title">Moments & Milestones Gallery</h2>
+                </div>
+                <!-- Filter Pills -->
+                <div class="flex flex-wrap gap-2 mt-6 md:mt-0">
+                    <button onclick="filterGallery('all')" class="gallery-filter px-4 py-2 text-xs font-semibold uppercase tracking-wider rounded-full bg-charcoal text-white transition-all active-filter" data-filter="all">All</button>
+                    <button onclick="filterGallery('infrastructure')" class="gallery-filter px-4 py-2 text-xs font-semibold uppercase tracking-wider rounded-full bg-stoneLight text-charcoal hover:bg-stoneLight/80 transition-all" data-filter="infrastructure">Infrastructure</button>
+                    <button onclick="filterGallery('nature')" class="gallery-filter px-4 py-2 text-xs font-semibold uppercase tracking-wider rounded-full bg-stoneLight text-charcoal hover:bg-stoneLight/80 transition-all" data-filter="nature">Nature</button>
                 </div>
             </div>
 
             <!-- Gallery Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" id="gallery-grid">
-                
-                <!-- Card 1 -->
-                <div class="gallery-item group relative rounded-3xl overflow-hidden bg-brand-slate border border-white/10 cursor-pointer shadow-xl"
-                     data-category="roads"
-                     data-card-index="0"
-                     data-year="2023–2024"
-                     data-img="https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?auto=format&fit=crop&w=1200&q=80">
-                    <div class="aspect-[4/3] overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?auto=format&fit=crop&w=800&q=80" 
-                             onerror="this.src='https://placehold.co/800x600/1C2541/FFFFFF?text=CC+Road+Infrastructure'"
-                             alt="Main Colony CC Road" 
-                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center justify-between text-xs text-amber-400 font-semibold uppercase tracking-wider mb-2">
-                            <span data-i18n="catRoads">Roads & Drainage</span>
-                            <span>2023–24</span>
-                        </div>
-                        <h3 data-i18n="card0Title" class="font-serif text-xl font-bold text-white group-hover:text-amber-300 transition-colors">Main Colony CC Road & Drainage</h3>
-                        <p data-i18n="card0Short" class="text-slate-300 text-xs mt-2 line-clamp-2">All-weather concrete street paving with covered monsoon storm drains.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Item 1 -->
+                <div class="gallery-item group relative overflow-hidden rounded-2xl bg-stoneLight aspect-[4/3] cursor-pointer" data-category="infrastructure" onclick="openLightbox('https://images.unsplash.com/photo-1590069261209-f8e9b8642343?auto=format&fit=crop&w=1200&q=80', 'Main Village Pathway & Concrete Roads (2024)', 'Reinforced all-weather roads built during Phase Two development.')">
+                    <img src="https://images.unsplash.com/photo-1590069261209-f8e9b8642343?auto=format&fit=crop&w=800&q=80" alt="Village Road" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-xs text-stone-300 uppercase tracking-wider mb-1">Infrastructure</span>
+                        <h4 class="font-serif text-white text-lg">Main Village Pathway</h4>
                     </div>
                 </div>
-
-                <!-- Card 2 -->
-                <div class="gallery-item group relative rounded-3xl overflow-hidden bg-brand-slate border border-white/10 cursor-pointer shadow-xl"
-                     data-category="education"
-                     data-card-index="1"
-                     data-year="2022–2023"
-                     data-img="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1200&q=80">
-                    <div class="aspect-[4/3] overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=800&q=80" 
-                             onerror="this.src='https://placehold.co/800x600/1C2541/FFFFFF?text=School+Transformation'"
-                             alt="Upgraded Village School" 
-                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center justify-between text-xs text-amber-400 font-semibold uppercase tracking-wider mb-2">
-                            <span data-i18n="catEdu">Schools & Civic</span>
-                            <span>2022–23</span>
-                        </div>
-                        <h3 data-i18n="card1Title" class="font-serif text-xl font-bold text-white group-hover:text-amber-300 transition-colors">Upgraded School & Digital Learning</h3>
-                        <p data-i18n="card1Short" class="text-slate-300 text-xs mt-2 line-clamp-2">Modernized classrooms, sanitation facilities, and compound wall security.</p>
+                <!-- Item 2 -->
+                <div class="gallery-item group relative overflow-hidden rounded-2xl bg-stoneLight aspect-[4/3] cursor-pointer" data-category="nature" onclick="openLightbox('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80', 'Agricultural Fields & Green Canopy', 'Sustainable farming irrigation and lush greenery surrounding Thimmarajupeta.')">
+                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80" alt="Fields" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-xs text-stone-300 uppercase tracking-wider mb-1">Nature</span>
+                        <h4 class="font-serif text-white text-lg">Agricultural Horizons</h4>
                     </div>
                 </div>
-
-                <!-- Card 3 -->
-                <div class="gallery-item group relative rounded-3xl overflow-hidden bg-brand-slate border border-white/10 cursor-pointer shadow-xl"
-                     data-category="water"
-                     data-card-index="2"
-                     data-year="2024–2025"
-                     data-img="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=80">
-                    <div class="aspect-[4/3] overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=800&q=80" 
-                             onerror="this.src='https://placehold.co/800x600/1C2541/FFFFFF?text=Water+Supply+Grid'"
-                             alt="Water Supply Infrastructure" 
-                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center justify-between text-xs text-amber-400 font-semibold uppercase tracking-wider mb-2">
-                            <span data-i18n="catWater">Water & Green</span>
-                            <span>2024–25</span>
-                        </div>
-                        <h3 data-i18n="card2Title" class="font-serif text-xl font-bold text-white group-hover:text-amber-300 transition-colors">Clean Drinking Water Supply Grid</h3>
-                        <p data-i18n="card2Short" class="text-slate-300 text-xs mt-2 line-clamp-2">24/7 household tap water connectivity and RO purification plant.</p>
+                <!-- Item 3 -->
+                <div class="gallery-item group relative overflow-hidden rounded-2xl bg-stoneLight aspect-[4/3] cursor-pointer" data-category="infrastructure" onclick="openLightbox('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80', 'Solar Street Lighting Integration', 'Transitioning to renewable energy sources for community streetlights.')">
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80" alt="Solar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-xs text-stone-300 uppercase tracking-wider mb-1">Infrastructure</span>
+                        <h4 class="font-serif text-white text-lg">Solar Street Lighting</h4>
                     </div>
                 </div>
-
-                <!-- Card 4 -->
-                <div class="gallery-item group relative rounded-3xl overflow-hidden bg-brand-slate border border-white/10 cursor-pointer shadow-xl"
-                     data-category="roads"
-                     data-card-index="3"
-                     data-year="2024–2025"
-                     data-img="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=80">
-                    <div class="aspect-[4/3] overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=800&q=80" 
-                             onerror="this.src='https://placehold.co/800x600/1C2541/FFFFFF?text=LED+Street+Lighting'"
-                             alt="Solar and LED Street Lighting" 
-                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center justify-between text-xs text-amber-400 font-semibold uppercase tracking-wider mb-2">
-                            <span data-i18n="catRoads">Roads & Drainage</span>
-                            <span>2024–25</span>
-                        </div>
-                        <h3 data-i18n="card3Title" class="font-serif text-xl font-bold text-white group-hover:text-amber-300 transition-colors">Solar & LED Street Illumination</h3>
-                        <p data-i18n="card3Short" class="text-slate-300 text-xs mt-2 line-clamp-2">Energy-efficient lighting covering every internal street and main junction.</p>
-                    </div>
-                </div>
-
-                <!-- Card 5 -->
-                <div class="gallery-item group relative rounded-3xl overflow-hidden bg-brand-slate border border-white/10 cursor-pointer shadow-xl"
-                     data-category="education"
-                     data-card-index="4"
-                     data-year="2021–2022"
-                     data-img="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80">
-                    <div class="aspect-[4/3] overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" 
-                             onerror="this.src='https://placehold.co/800x600/1C2541/FFFFFF?text=Village+Secretariat'"
-                             alt="Village Civic Building" 
-                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center justify-between text-xs text-amber-400 font-semibold uppercase tracking-wider mb-2">
-                            <span data-i18n="catEdu">Schools & Civic</span>
-                            <span>2021–22</span>
-                        </div>
-                        <h3 data-i18n="card4Title" class="font-serif text-xl font-bold text-white group-hover:text-amber-300 transition-colors">Village Secretariat & Farmer Hub</h3>
-                        <p data-i18n="card4Short" class="text-slate-300 text-xs mt-2 line-clamp-2">Modernized civic governance center and agricultural support facility.</p>
-                    </div>
-                </div>
-
-                <!-- Card 6 -->
-                <div class="gallery-item group relative rounded-3xl overflow-hidden bg-brand-slate border border-white/10 cursor-pointer shadow-xl"
-                     data-category="water"
-                     data-card-index="5"
-                     data-year="2025–2026"
-                     data-img="https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=1200&q=80">
-                    <div class="aspect-[4/3] overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=800&q=80" 
-                             onerror="this.src='https://placehold.co/800x600/1C2541/FFFFFF?text=Pond+Rejuvenation'"
-                             alt="Green Avenue & Water Tank" 
-                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center justify-between text-xs text-amber-400 font-semibold uppercase tracking-wider mb-2">
-                            <span data-i18n="catWater">Water & Green</span>
-                            <span>2025–26</span>
-                        </div>
-                        <h3 data-i18n="card5Title" class="font-serif text-xl font-bold text-white group-hover:text-amber-300 transition-colors">Tank Rejuvenation & Green Belt</h3>
-                        <p data-i18n="card5Short" class="text-slate-300 text-xs mt-2 line-clamp-2">Groundwater recharge initiative paired with avenue plantation.</p>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
 
-    <!-- ==================== LIGHTBOX MODAL FOR GALLERY INSPECTION ==================== -->
-    <div id="lightbox-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/85 backdrop-blur-md p-4 sm:p-6">
-        <div class="relative w-full max-w-4xl bg-brand-slate rounded-3xl overflow-hidden border border-white/15 shadow-2xl">
-            
-            <!-- Close Button -->
-            <button id="close-lightbox" aria-label="Close modal" class="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/60 text-white hover:bg-amber-500 hover:text-brand-navy flex items-center justify-center transition-colors">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
-            </button>
+    <!-- Footer -->
+    <footer class="py-12 px-6 bg-charcoal text-stone-300 border-t border-stone-800 text-center">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+            <p class="font-serif text-lg text-white">Thimmarajupeta Development <span class="text-terracotta text-sm">2021–2026</span></p>
+            <p class="text-xs text-stone-400">Designed with editorial elegance & bilingual accessibility.</p>
+        </div>
+    </footer>
 
-            <div class="grid grid-cols-1 md:grid-cols-12">
-                <div class="md:col-span-7 bg-black flex items-center justify-center">
-                    <img id="modal-img" src="" alt="Project Preview" class="w-full h-72 sm:h-96 md:h-full object-cover">
-                </div>
-                <div class="md:col-span-5 p-6 sm:p-8 flex flex-col justify-between text-white">
-                    <div>
-                        <span id="modal-year" class="inline-block px-3 py-1 rounded-full bg-amber-500/20 text-amber-400 text-xs font-bold uppercase tracking-wider mb-3"></span>
-                        <h3 id="modal-title" class="font-serif text-2xl font-bold leading-snug mb-3"></h3>
-                        <p id="modal-location" class="text-xs text-slate-400 font-medium flex items-center gap-1.5 mb-4">
-                            <svg class="w-4 h-4 text-amber-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                            <span></span>
-                        </p>
-                        <p id="modal-desc" class="text-sm text-slate-300 leading-relaxed"></p>
-                    </div>
-                    <div class="pt-6 mt-6 border-t border-white/10 flex items-center justify-between text-xs text-slate-400">
-                        <span data-i18n="modalArchive">Thimmarajupeta Archive</span>
-                        <span data-i18n="modalStatus" class="text-emerald-400 font-semibold">● Completed</span>
-                    </div>
-                </div>
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 z-50 bg-charcoal/90 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="relative max-w-3xl w-full bg-cream rounded-3xl overflow-hidden shadow-2xl">
+            <button onclick="closeLightbox()" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-charcoal text-white flex items-center justify-center hover:bg-terracotta transition-colors">&times;</button>
+            <img id="lightbox-img" src="" alt="" class="w-full h-64 sm:h-96 object-cover">
+            <div class="p-8">
+                <h3 id="lightbox-title" class="font-serif text-2xl text-charcoal font-medium mb-2"></h3>
+                <p id="lightbox-desc" class="text-mutedGray text-sm leading-relaxed"></p>
             </div>
         </div>
     </div>
 
-    <!-- ==================== FOOTER ==================== -->
-    <footer class="bg-brand-navy border-t border-white/10 text-slate-300 py-12 px-4 sm:px-8">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-            <div class="text-center md:text-left">
-                <div data-i18n="footerTitle" class="font-serif text-xl font-bold text-white">Thimmarajupeta Development (2021–2026)</div>
-                <p data-i18n="footerSub" class="text-xs text-slate-400 mt-1">Anakapalli District, Andhra Pradesh • Community Progress Documentation</p>
-            </div>
-
-            <div class="flex items-center gap-6 text-xs font-semibold uppercase tracking-wider">
-                <a href="#overview" data-i18n="navOverview" class="hover:text-amber-400 transition-colors">Overview</a>
-                <a href="#timeline" data-i18n="footerTimeline" class="hover:text-amber-400 transition-colors">Timeline</a>
-                <a href="#gallery" data-i18n="footerGallery" class="hover:text-amber-400 transition-colors">Gallery</a>
-                <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" data-i18n="footerTop" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-amber-500 hover:text-brand-navy text-white transition-all">
-                    Top ↑
-                </button>
-            </div>
-        </div>
-    </footer>
-
-    <!-- ==================== JAVASCRIPT FOR BILINGUAL SUPPORT & INTERACTIVITY ==================== -->
+    <!-- JavaScript for Bilingual Toggle & Gallery Filter -->
     <script>
+        let currentLang = 'en';
+
         const translations = {
             en: {
-                pageTitle: "Thimmarajupeta Development | 2021 – 2026 Progress Report",
-                brandTitle: "THIMMARAJUPETA",
-                brandSubtitle: "Development 2021–2026",
+                pageTitle: "Thimmarajupeta Development (2021–2026)",
                 navOverview: "Overview",
-                navPillars: "Key Pillars",
-                navTimeline: "2021–2026 Timeline",
-                navGallery: "Project Gallery",
-                navExplore: "Explore Works",
-                mobileOverview: "Overview & Vision",
-                mobilePillars: "Development Pillars",
-                mobileTimeline: "2021–2026 Timeline",
-                mobileGallery: "Visual Gallery",
-                heroBadge: "Anakapalli District • Andhra Pradesh",
-                heroTitle: 'Transforming <span class="italic font-normal text-amber-400">Thimmarajupeta</span><br class="hidden sm:inline"> Into a Model Village',
-                heroDesc: "A five-year journey (2021–2026) of modern rural infrastructure, all-weather CC roads, clean drinking water, upgraded educational spaces, and sustainable community growth.",
-                heroCtaPrimary: "View Development Gallery",
-                heroCtaSecondary: "2021–2026 Milestones",
-                overviewTag: "2021 – 2026 Vision",
-                overviewHeading: "Building Lasting Foundations for Every Household.",
-                overviewBody: "Between 2021 and 2026, Thimmarajupeta witnessed systematic grassroots transformation. Guided by transparent execution and community participation, key civic gaps in road connectivity, underground drainage, solar street lighting, and public school infrastructure were resolved.",
-                overviewNote: "Progress Documented Across 5 Years",
-                stat1Title: "Internal CC Roads",
-                stat1Desc: "All-weather concrete roads & side drains completed",
-                stat2Title: "LED & Solar Lights",
-                stat2Desc: "Safe, energy-efficient illumination across every street",
-                stat3Title: "Clean Water Grid",
-                stat3Desc: "Overhead tank upgrades & household tap connections",
-                stat4Title: "Public Institutions",
-                stat4Desc: "Renovated Anganwadi, ZP School & Village Secretariat",
-                pillarsTag: "Core Focus Areas",
-                pillarsHeading: "Pillars of Transformation",
-                pillarsSub: "Targeted civic investments engineered to elevate everyday quality of life in Thimmarajupeta.",
-                pillar1Tag: "01 / Connectivity",
-                pillar1Title: "Roads & Storm Drainage",
-                pillar1Desc: "Construction of reinforced Cement Concrete (CC) internal streets, approach road widening, and covered storm-water drains to eliminate monsoon waterlogging.",
-                pillar2Tag: "02 / Public Welfare",
-                pillar2Title: "Education & Healthcare",
-                pillar2Desc: "Modernized classrooms, clean sanitation blocks, compound walls for village schools, and strengthened primary health wellness facilities for families and elders.",
-                pillar3Tag: "03 / Sustainability",
-                pillar3Title: "Water & Green Spaces",
-                pillar3Desc: "Rejuvenation of village ponds, purified RO drinking water plants, avenue plantation drives, and dedicated community gathering parks.",
-                timelineTag: "Chronicle of Growth",
-                timelineHeading: "2021 – 2026 Roadmap",
-                timelineSub: "Year-by-year execution milestones marking steady infrastructure upgrades across all wards.",
-                t1Title: "Foundation & Civic Audit",
-                t1Desc: "Ward-level infrastructure mapping, initial drainage clearance, and Phase-1 LED street lighting installation.",
-                t2Title: "School & Water Upgrades",
-                t2Desc: "Renovation of primary school buildings, digital classroom setup, and purified RO water plant commissioning.",
-                t3Title: "CC Roads Expansion",
-                t3Desc: "Major laying of cement concrete roads connecting main colonies and agricultural approach pathways.",
-                t4Title: "Community & Sanitation",
-                t4Desc: "Solid waste management sheds, community hall beautification, and solar high-mast junction lights.",
-                t5Title: "Smart Village Vision",
-                t5Desc: "Full-coverage tap water grid, green park corridors, and digital citizen service documentation.",
-                galleryTag: "Visual Documentation",
-                galleryHeading: "Development Gallery",
-                gallerySub: "Explore completed works, infrastructure upgrades, and community milestones across Thimmarajupeta (2021–2026). Click any card to inspect details.",
-                filterAll: "All Works",
-                filterRoads: "Roads & Drainage",
-                filterEdu: "Schools & Civic",
-                filterWater: "Water & Green",
-                catRoads: "Roads & Drainage",
-                catEdu: "Schools & Civic",
-                catWater: "Water & Green",
-                card0Title: "Main Colony CC Road & Drainage",
-                card0Short: "All-weather concrete street paving with covered monsoon storm drains.",
-                card1Title: "Upgraded School & Digital Learning",
-                card1Short: "Modernized classrooms, sanitation facilities, and compound wall security.",
-                card2Title: "Clean Drinking Water Supply Grid",
-                card2Short: "24/7 household tap water connectivity and RO purification plant.",
-                card3Title: "Solar & LED Street Illumination",
-                card3Short: "Energy-efficient lighting covering every internal street and main junction.",
-                card4Title: "Village Secretariat & Farmer Hub",
-                card4Short: "Modernized civic governance center and agricultural support facility.",
-                card5Title: "Tank Rejuvenation & Green Belt",
-                card5Short: "Groundwater recharge initiative paired with avenue plantation.",
-                modalArchive: "Thimmarajupeta Archive",
-                modalStatus: "● Completed",
-                footerTitle: "Thimmarajupeta Development (2021–2026)",
-                footerSub: "Anakapalli District, Andhra Pradesh • Community Progress Documentation",
-                footerTimeline: "Timeline",
-                footerGallery: "Gallery",
-                footerTop: "Top ↑",
-                galleryCards: [
-                    {
-                        title: "Main Colony CC Road & Covered Drainage",
-                        location: "Central Ward, Thimmarajupeta",
-                        desc: "Newly laid heavy-duty cement concrete road paired with reinforced side drains ensuring smooth all-season vehicle and pedestrian access."
-                    },
-                    {
-                        title: "Upgraded ZP High School & Digital Classrooms",
-                        location: "School Campus, Thimmarajupeta",
-                        desc: "Comprehensive classroom refurbishment, fresh exterior painting, safe drinking water station, and improved seating for students."
-                    },
-                    {
-                        title: "Overhead Water Tank & Piped Supply Grid",
-                        location: "North Sector, Thimmarajupeta",
-                        desc: "High-capacity overhead storage reservoir and upgraded distribution pipelines delivering clean water directly to village households."
-                    },
-                    {
-                        title: "Solar High-Mast & LED Street Lighting",
-                        location: "Main Junction & Village Entrances",
-                        desc: "Installation of high-lumen solar and LED streetlights across major junctions and residential lanes for enhanced night-time safety."
-                    },
-                    {
-                        title: "Grama Sachivalayam & Rythu Bharosa Kendra",
-                        location: "Civic Center, Thimmarajupeta",
-                        desc: "Dedicated administrative and farmer support centers providing transparent citizen services, crop advisory, and welfare delivery."
-                    },
-                    {
-                        title: "Village Tank Bund & Avenue Plantation",
-                        location: "East Tank Bund, Thimmarajupeta",
-                        desc: "Desilting and bund strengthening of the village water tank alongside native tree plantation and walking track development."
-                    }
-                ]
+                navImpact: "Impact",
+                navRoadmap: "Roadmap",
+                navGallery: "Gallery",
+                navCta: "Explore Visuals",
+                heroTag: "Transformation Era • 2021–2026",
+                heroTitle: "The Renaissance of Thimmarajupeta",
+                heroDesc: "A comprehensive chronicle of rural infrastructure evolution, digital integration, and sustainable community growth spanning half a decade.",
+                btnDiscover: "Discover Journey",
+                btnGallery: "View Photo Archive",
+                sec1Tag: "Rooted in Heritage",
+                sec1Title: "Building a sustainable future while honoring our foundational roots.",
+                sec1Desc1: "Between 2021 and 2026, Thimmarajupeta underwent a transformative shift. Through collaborative community efforts, structural modernization, and enhanced connectivity, our village established a new benchmark for rural development in Andhra Pradesh.",
+                sec1Desc2: "Every initiative—from agricultural water management to digital literacy—was designed to empower the next generation while preserving our rich cultural identity.",
+                stat1: "Years of Growth",
+                stat2: "Community Driven",
+                stat3: "Modern Infrastructure",
+                stat4: "Vision Realized",
+                roadmapTag: "Chronological Progress",
+                roadmapTitle: "The 2021–2026 Milestone Timeline",
+                phase1: "Phase One",
+                rm1Title: "Foundational Planning & Drainage Systems",
+                rm1Desc: "Initiated comprehensive village surveys, established primary sanitation blueprints, and laid underground drainage pipelines across key residential sectors.",
+                phase2: "Phase Two",
+                rm2Title: "Road Connectivity & Green Canopy",
+                rm2Desc: "Upgraded dirt pathways into reinforced concrete all-weather roads and launched a massive tree-planting drive along main thoroughfares.",
+                phase3: "Phase Three",
+                rm3Title: "Digital Integration & Sustainable Future",
+                rm3Desc: "Completed solar street lighting installation, deployed high-speed public Wi-Fi zones, and finalized digital documentation for community welfare programs.",
+                galleryTag: "Visual Archives",
+                galleryTitle: "Moments & Milestones Gallery"
             },
             te: {
-                pageTitle: "తిమ్మరాజుపేట అభివృద్ధి | 2021 – 2026 ప్రగతి నివేదిక",
-                brandTitle: "తిమ్మరాజుపేట",
-                brandSubtitle: "అభివృద్ధి 2021–2026",
+                pageTitle: "తిమ్మరాజుపేట అభివృద్ధి (2021–2026)",
                 navOverview: "అవలోకనం",
-                navPillars: "ప్రధాన అంశాలు",
-                navTimeline: "2021–2026 ప్రయాణం",
-                navGallery: "ప్రాజెక్ట్ గ్యాలరీ",
-                navExplore: "పనులను చూడండి",
-                mobileOverview: "అవలోకనం & దృక్పథం",
-                mobilePillars: "అభివృద్ధి స్తంభాలు",
-                mobileTimeline: "2021–2026 మైలురాళ్ళు",
-                mobileGallery: "ఫోటో గ్యాలరీ",
-                heroBadge: "అనకాపల్లి జిల్లా • ఆంధ్రప్రదేశ్",
-                heroTitle: '<span class="italic font-normal text-amber-400">తిమ్మరాజుపేటను</span><br class="hidden sm:inline"> ఆదర్శ గ్రామంగా తీర్చిదిద్దుతూ',
-                heroDesc: "ఆధునిక గ్రామీణ మౌలిక సదుపాయాలు, సిమెంట్ రోడ్లు, స్వచ్ఛమైన తాగునీరు, ఆధునికీకరించిన పాఠశాలలు మరియు సుస్థిర ప్రగతితో ఐదేళ్ల (2021–2026) అభివృద్ధి ప్రయాణం.",
-                heroCtaPrimary: "అభివృద్ధి గ్యాలరీని చూడండి",
-                heroCtaSecondary: "2021–2026 మైలురాళ్ళు",
-                overviewTag: "2021 – 2026 దృక్పథం",
-                overviewHeading: "ప్రతి కుటుంబానికి బలమైన మౌలిక సదుపాయాల నిర్మాణం.",
-                overviewBody: "2021 నుండి 2026 మధ్య తిమ్మరాజుపేట గ్రామంలో సమగ్ర అభివృద్ధి జరిగింది. పారదర్శకమైన అమలు మరియు గ్రామస్తుల భాగస్వామ్యంతో రహదారులు, భూగర్భ డ్రైనేజీ, సోలార్ వీధి దీపాలు మరియు ప్రభుత్వ పాఠశాలల మౌలిక సదుపాయాలు మెరుగుపరచబడ్డాయి.",
-                overviewNote: "5 సంవత్సరాల ప్రగతి నివేదిక",
-                stat1Title: "అంతర్గత సిసి రోడ్లు",
-                stat1Desc: "అన్ని కాలాలకు అనువైన సిమెంట్ రోడ్లు & సైడ్ డ్రైన్ల నిర్మాణం",
-                stat2Title: "ఎల్‌ఈడీ & సోలార్ దీపాలు",
-                stat2Desc: "ప్రతి వీధిలో సురక్షితమైన, విద్యుత్ ఆదా చేసే వీధి దీపాలు",
-                stat3Title: "స్వచ్ఛమైన తాగునీరు",
-                stat3Desc: "ఓవర్‌హెడ్ ట్యాంక్ ఆధునీకరణ & ఇంటింటికీ కుళాయి కనెక్షన్లు",
-                stat4Title: "ప్రభుత్వ సంస్థలు",
-                stat4Desc: "ఆధునికీకరించిన అంగన్‌వాడీ, పాఠశాల & గ్రామ సచివాలయం",
-                pillarsTag: "ప్రధాన రంగాలు",
-                pillarsHeading: "అభివృద్ధికి మూలస్తంభాలు",
-                pillarsSub: "తిమ్మరాజుపేట ప్రజల జీవన ప్రమాణాలను పెంపొందించడానికి చేపట్టిన కీలక మౌలిక సదుపాయాల పనులు.",
-                pillar1Tag: "01 / రవాణా & డ్రైనేజీ",
-                pillar1Title: "సిసి రోడ్లు & మురుగునీటి కాలువలు",
-                pillar1Desc: "వర్షాకాలంలో నీరు నిలవకుండా అంతర్గత సిమెంట్ కాంక్రీట్ (CC) రోడ్ల నిర్మాణం, ప్రధాన రహదారుల విస్తరణ మరియు కవర్డ్ డ్రైనేజీ వ్యవస్థ.",
-                pillar2Tag: "02 / ప్రజా సంక్షేమం",
-                pillar2Title: "విద్య & వైద్య సదుపాయాలు",
-                pillar2Desc: "ఆధునిక తరగతి గదులు, పరిశుభ్రమైన మరుగుదొడ్లు, పాఠశాల ప్రహరీ గోడల నిర్మాణం మరియు గ్రామస్తుల కోసం మెరుగైన ప్రాథమిక ఆరోగ్య సేవలు.",
-                pillar3Tag: "03 / పర్యావరణం & జలవనరులు",
-                pillar3Title: "తాగునీరు & హరిత వనాలు",
-                pillar3Desc: "గ్రామ చెరువుల పునరుద్ధరణ, శుద్ధజల ఆర్‌ఓ (RO) ప్లాంట్లు, రహదారుల వెంబడి మొక్కలు నాటడం మరియు కమ్యూనిటీ పార్కుల అభివృద్ధి.",
-                timelineTag: "ప్రగతి ప్రస్థానం",
-                timelineHeading: "2021 – 2026 కార్యాచరణ",
-                timelineSub: "అన్ని వార్డులలో దశలవారీగా పూర్తి చేసిన అభివృద్ధి పనుల వార్షిక మైలురాళ్ళు.",
-                t1Title: "పునాది & మౌలిక సదుపాయాల సర్వే",
-                t1Desc: "వార్డుల వారీగా అవసరాల గుర్తింపు, డ్రైనేజీ శుభ్రత మరియు మొదటి దశ ఎల్‌ఈడీ వీధి దీపాల ఏర్పాటు.",
-                t2Title: "పాఠశాల & తాగునీటి అభివృద్ధి",
-                t2Desc: "ప్రాథమిక పాఠశాల భవనాల ఆధునీకరణ, డిజిటల్ తరగతి గదులు మరియు ఆర్‌ఓ శుద్ధజల కేంద్రం ప్రారంభం.",
-                t3Title: "సిసి రోడ్ల విస్తరణ",
-                t3Desc: "ప్రధాన కాలనీలు మరియు వ్యవసాయ క్షేత్రాలకు వెళ్లే మార్గాలలో సిమెంట్ కాంక్రీట్ రోడ్ల నిర్మాణం.",
-                t4Title: "కమ్యూనిటీ & పారిశుధ్యం",
-                t4Desc: "ఘన వ్యర్థాల నిర్వహణ షెడ్లు, కమ్యూనిటీ హాల్ సుందరీకరణ మరియు కూడళ్లలో సోలార్ హై-మాస్ట్ దీపాలు.",
-                t5Title: "స్మార్ట్ విలేజ్ లక్ష్యం",
-                t5Desc: "అన్ని ఇళ్లకు కుళాయి నీటి సరఫరా, హరిత కారిడార్లు మరియు డిజిటల్ పౌర సేవల నమోదు.",
-                galleryTag: "దృశ్య నివేదిక",
-                galleryHeading: "అభివృద్ధి గ్యాలరీ",
-                gallerySub: "తిమ్మరాజుపేటలో (2021–2026) పూర్తయిన అభివృద్ధి పనులు మరియు మౌలిక సదుపాయాల చిత్రాలను చూడండి. పూర్తి వివరాల కోసం చిత్రంపై క్లిక్ చేయండి.",
-                filterAll: "అన్ని పనులు",
-                filterRoads: "రోడ్లు & డ్రైనేజీ",
-                filterEdu: "పాఠశాలలు & భవనాలు",
-                filterWater: "తాగునీరు & హరిత వనాలు",
-                catRoads: "రోడ్లు & డ్రైనేజీ",
-                catEdu: "పాఠశాలలు & భవనాలు",
-                catWater: "తాగునీరు & హరిత వనాలు",
-                card0Title: "ప్రధాన కాలనీ సిసి రోడ్డు & డ్రైనేజీ",
-                card0Short: "వర్షాకాలపు నీటి పారుదల కోసం కవర్డ్ డ్రైన్లతో కూడిన సిమెంట్ రహదారి.",
-                card1Title: "ఆధునికీకరించిన పాఠశాల & డిజిటల్ విద్య",
-                card1Short: "ఆధునిక తరగతి గదులు, మరుగుదొడ్లు మరియు ప్రహరీ గోడ నిర్మాణం.",
-                card2Title: "స్వచ్ఛమైన తాగునీటి సరఫరా వ్యవస్థ",
-                card2Short: "24/7 ఇంటింటికీ కుళాయి నీటి సరఫరా మరియు ఆర్‌ఓ శుద్ధజల కేంద్రం.",
-                card3Title: "సోలార్ & ఎల్‌ఈడీ వీధి దీపాలు",
-                card3Short: "ప్రతి వీధి మరియు ప్రధాన కూడళ్లలో విద్యుత్ ఆదా చేసే దీపాల ఏర్పాటు.",
-                card4Title: "గ్రామ సచివాలయం & రైతు భరోసా కేంద్రం",
-                card4Short: "పారదర్శక పౌర సేవలు మరియు వ్యవసాయ సహాయక కేంద్రం.",
-                card5Title: "చెరువు పునరుద్ధరణ & హరిత వనం",
-                card5Short: "భూగర్భ జలాల పెంపుదల మరియు రహదారుల వెంబడి మొక్కల పెంపకం.",
-                modalArchive: "తిమ్మరాజుపేట అభివృద్ధి రికార్డు",
-                modalStatus: "● పూర్తయింది",
-                footerTitle: "తిమ్మరాజుపేట అభివృద్ధి (2021–2026)",
-                footerSub: "అనకాపల్లి జిల్లా, ఆంధ్రప్రదేశ్ • గ్రామ ప్రగతి నివేదిక",
-                footerTimeline: "మైలురాళ్ళు",
-                footerGallery: "గ్యాలరీ",
-                footerTop: "పైకి ↑",
-                galleryCards: [
-                    {
-                        title: "ప్రధాన కాలనీ సిసి రోడ్డు & కవర్డ్ డ్రైనేజీ",
-                        location: "సెంట్రల్ వార్డ్, తిమ్మరాజుపేట",
-                        desc: "అన్ని కాలాలలో వాహనాలు మరియు పాదచారుల రాకపోకలకు అనువుగా బలమైన సిమెంట్ కాంక్రీట్ రోడ్డు మరియు సైడ్ డ్రైన్ల నిర్మాణం."
-                    },
-                    {
-                        title: "ఆధునికీకరించిన జెడ్‌పి హైస్కూల్ & డిజిటల్ తరగతి గదులు",
-                        location: "పాఠశాల ప్రాంగణం, తిమ్మరాజుపేట",
-                        desc: "తరగతి గదుల పూర్తి ఆధునీకరణ, కొత్త రంగులు, స్వచ్ఛమైన తాగునీటి వసతి మరియు విద్యార్థులకు మెరుగైన బెంచీల ఏర్పాటు."
-                    },
-                    {
-                        title: "ఓవర్‌హెడ్ వాటర్ ట్యాంక్ & పైప్‌లైన్ వ్యవస్థ",
-                        location: "ఉత్తర విభాగం, తిమ్మరాజుపేట",
-                        desc: "గ్రామంలోని ప్రతి ఇంటికీ నేరుగా స్వచ్ఛమైన తాగునీటిని అందించేందుకు అధిక సామర్థ్యం గల ట్యాంక్ మరియు పైప్‌లైన్ల విస్తరణ."
-                    },
-                    {
-                        title: "సోలార్ హై-మాస్ట్ & ఎల్‌ఈడీ వీధి దీపాలు",
-                        location: "ప్రధాన కూడలి & గ్రామ ప్రవేశ ద్వారాలు",
-                        desc: "రాత్రిపూట భద్రత కోసం ప్రధాన కూడళ్లు మరియు నివాస వీధులలో అధిక కాంతినిచ్చే సోలార్ మరియు ఎల్‌ఈడీ వీధి దీపాల ఏర్పాటు."
-                    },
-                    {
-                        title: "గ్రామ సచివాలయం & రైతు భరోసా కేంద్రం",
-                        location: "సివిక్ సెంటర్, తిమ్మరాజుపేట",
-                        desc: "ప్రజలకు పారదర్శక పరిపాలన సేవలు మరియు రైతులకు పంట సలహాలు, ఎరువులు అందించే ఆధునిక కేంద్రం."
-                    },
-                    {
-                        title: "గ్రామ చెరువు కట్ట అభివృద్ధి & హరిత వనం",
-                        location: "తూర్పు చెరువు కట్ట, తిమ్మరాజుపేట",
-                        desc: "గ్రామ చెరువు పూడికతీత, కట్ట బలోపేతం మరియు వాకింగ్ ట్రాక్‌తో పాటు మొక్కల పెంపకం కార్యక్రమం."
-                    }
-                ]
+                navImpact: "ప్రభావం",
+                navRoadmap: "ప్రణాళిక",
+                navGallery: "గ్యాలరీ",
+                navCta: "చిత్రాలను వీక్షించండి",
+                heroTag: "పరివర్తన యుగం • 2021–2026",
+                heroTitle: "తిమ్మరాజుపేట పునరుజ్జీవనం",
+                heroDesc: "గ్రామీణ మౌలిక సదుపాయాల అభివృద్ధి, డిజిటల్ ఏకీకరణ మరియు స్థిరమైన వృద్ధి యొక్క ఐదు సంవత్సరాల సమగ్ర ప్రయాణం.",
+                btnDiscover: "ప్రయాణాన్ని అన్వేషించండి",
+                btnGallery: "ఫోటో ఆర్కైవ్ చూడండి",
+                sec1Tag: "వేళ్లూనుకున్న వారసత్వం",
+                sec1Title: "మన పునాదులను గౌరవిస్తూ స్థిరమైన భవిష్యత్తును నిర్మించడం.",
+                sec1Desc1: "2021 మరియు 2026 మధ్య, తిమ్మరాజుపేట అద్భుతమైన మార్పులకు లోనైంది. సామూహిక కృషి, నిర్మాణ ఆధునీకరణ మరియు మెరుగైన కనెక్టివిటీ ద్వారా మా గ్రామం ఆంధ్రప్రదేశ్‌లో కొత్త ప్రమాణాలను సృష్టించింది.",
+                sec1Desc2: "వ్యవసాయ నీటి నిర్వహణ నుండి డిజిటల్ అక్షరాస్యత వరకు ప్రతి ప్రణాళికాబద్ధమైన చర్య యువతరానికి ఉపాధి మరియు సాధికారతను అందించింది.",
+                stat1: "అభివృద్ధి సంవత్సరాలు",
+                stat2: "సమాజ నడిపించిన ప్రగతి",
+                stat3: "ఆధునిక మౌలిక సదుపాయాలు",
+                stat4: "సాకారమైన ఆశయం",
+                roadmapTag: "కాలక్రమానుసార అభివృద్ధి",
+                roadmapTitle: "2021–2026 మైలురాళ్ల ప్రయాణం",
+                phase1: "మొదటి దశ",
+                rm1Title: "ప్రణాళిక & భూగర్భ డ్రైనేజీ వ్యవస్థ",
+                rm1Desc: "గ్రామ సర్వేలు నిర్వహించి, ప్రాథమిక పారిశుద్ధ్య ప్రణాళికలను రూపొందించి, ప్రధాన ప్రాంతాల్లో భూగర్భ డ్రైనేజీ పైప్‌లైన్‌లను ఏర్పాటు చేశాము.",
+                phase2: "రెండవ దశ",
+                rm2Title: "రోడ్డు కనెక్టివిటీ & పచ్చదనం",
+                rm2Desc: "మట్టి రోడ్లను పటిష్టమైన సిమెంట్ రోడ్లుగా మార్చాము మరియు ప్రధాన రహదారుల వెంబడి మొక్కల పెంపకందాడు చేపట్టాము.",
+                phase3: "మూడవ దశ",
+                rm3Title: "డిజిటల్ ఏకీకరణ & హరిత భవిష్యత్తు",
+                rm3Desc: "సోలార్ స్ట్రీట్ లైట్ల ఏర్పాటు, హై-స్పీడ్ పబ్లిక్ వై-ఫై జోన్‌లు మరియు సంక్షేమ కార్యక్రమాల డిజిటలైజేషన్ పూర్తి చేయబడింది.",
+                galleryTag: "దృశ్య ఆర్కైవ్‌లు",
+                galleryTitle: "జ్ఞాపకాలు & మైలురాళ్ల గ్యాలరీ"
             }
         };
 
-        let currentLang = 'en';
-        let activeModalCardIndex = null;
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'te' : 'en';
+            const t = translations[currentLang];
 
-        function setLanguage(lang) {
-            currentLang = lang;
-            const dict = translations[lang];
-            document.documentElement.lang = lang;
-            document.title = dict.pageTitle;
+            // Update button text
+            document.getElementById('langToggle').innerText = currentLang === 'en' ? 'తెలుగు' : 'English';
 
-            // Update toggle button styles
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                const isTarget = btn.getAttribute('data-lang-btn') === lang;
-                if (isTarget) {
-                    btn.classList.add('bg-amber-500', 'text-brand-navy', 'shadow-sm');
-                    btn.classList.remove('text-slate-200', 'hover:text-white');
-                } else {
-                    btn.classList.remove('bg-amber-500', 'text-brand-navy', 'shadow-sm');
-                    btn.classList.add('text-slate-200', 'hover:text-white');
-                }
-            });
-
-            // Update standard text nodes
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (dict[key]) {
-                    el.textContent = dict[key];
-                }
-            });
-
-            // Update HTML nodes (such as Hero Title with styled span)
-            document.querySelectorAll('[data-i18n-html]').forEach(el => {
-                const key = el.getAttribute('data-i18n-html');
-                if (dict[key]) {
-                    el.innerHTML = dict[key];
-                }
-            });
-
-            // If lightbox modal is currently open, update its content live
-            if (activeModalCardIndex !== null) {
-                populateModal(activeModalCardIndex);
+            // Apply fonts based on language
+            const bodyEl = document.body;
+            if (currentLang === 'te') {
+                bodyEl.classList.add('font-telugu');
+            } else {
+                bodyEl.classList.remove('font-telugu');
             }
+
+            // Update text elements
+            document.getElementById('page-title').innerText = t.pageTitle;
+            document.querySelector('.lang-nav-overview').innerText = t.navOverview;
+            document.querySelector('.lang-nav-impact').innerText = t.navImpact;
+            document.querySelector('.lang-nav-roadmap').innerText = t.navRoadmap;
+            document.querySelector('.lang-nav-gallery').innerText = t.navGallery;
+            document.querySelector('.lang-nav-cta').innerText = t.navCta;
+            document.querySelector('.lang-hero-tag').innerText = t.heroTag;
+            document.getElementById('hero-title').innerHTML = currentLang === 'en' ? 'The Renaissance of <span class="italic font-normal text-terracotta">Thimmarajupeta</span>' : 'తిమ్మరాజుపేట <span class="italic font-normal text-terracotta">పునరుజ్జీవనం</span>';
+            document.getElementById('hero-desc').innerText = t.heroDesc;
+            document.querySelector('.lang-btn-discover').innerText = t.btnDiscover;
+            document.querySelector('.lang-btn-gallery').innerText = t.btnGallery;
+            document.querySelector('.lang-sec1-tag').innerText = t.sec1Tag;
+            document.getElementById('sec1-title').innerText = t.sec1Title;
+            document.getElementById('sec1-desc1').innerText = t.sec1Desc1;
+            document.getElementById('sec1-desc2').innerText = t.sec1Desc2;
+            document.querySelector('.lang-stat1').innerText = t.stat1;
+            document.querySelector('.lang-stat2').innerText = t.stat2;
+            document.querySelector('.lang-stat3').innerText = t.stat3;
+            document.querySelector('.lang-stat4').innerText = t.stat4;
+            document.querySelector('.lang-roadmap-tag').innerText = t.roadmapTag;
+            document.getElementById('roadmap-title').innerText = t.roadmapTitle;
+            document.querySelector('.lang-phase1').innerText = t.phase1;
+            document.querySelector('.lang-rm1-title').innerText = t.rm1Title;
+            document.querySelector('.lang-rm1-desc').innerText = t.rm1Desc;
+            document.querySelector('.lang-phase2').innerText = t.phase2;
+            document.querySelector('.lang-rm2-title').innerText = t.rm2Title;
+            document.querySelector('.lang-rm2-desc').innerText = t.rm2Desc;
+            document.querySelector('.lang-phase3').innerText = t.phase3;
+            document.querySelector('.lang-rm3-title').innerText = t.rm3Title;
+            document.querySelector('.lang-rm3-desc').innerText = t.rm3Desc;
+            document.querySelector('.lang-gallery-tag').innerText = t.galleryTag;
+            document.getElementById('gallery-title').innerText = t.galleryTitle;
         }
 
-        function populateModal(index) {
+        // Gallery Filter Function
+        function filterCategory(category) {
             const items = document.querySelectorAll('.gallery-item');
-            const item = items[index];
-            const cardData = translations[currentLang].galleryCards[index];
+            const buttons = document.querySelectorAll('.gallery-filter');
 
-            document.getElementById('modal-img').src = item.getAttribute('data-img');
-            document.getElementById('modal-year').textContent = item.getAttribute('data-year');
-            document.getElementById('modal-title').textContent = cardData.title;
-            document.querySelector('#modal-location span').textContent = cardData.location;
-            document.getElementById('modal-desc').textContent = cardData.desc;
+            buttons.forEach(btn => {
+                if (btn.getAttribute('data-filter') === category) {
+                    btn.classList.remove('bg-stoneLight', 'text-charcoal');
+                    btn.classList.add('bg-charcoal', 'text-white');
+                } else {
+                    btn.classList.remove('bg-charcoal', 'text-white');
+                    btn.classList.add('bg-stoneLight', 'text-charcoal');
+                }
+            });
+
+            items.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            // Language switcher listeners
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    setLanguage(btn.getAttribute('data-lang-btn'));
-                });
-            });
+        // Lightbox Functions
+        function openLightbox(imgSrc, title, desc) {
+            document.getElementById('lightbox-img').src = imgSrc;
+            document.getElementById('lightbox-title').innerText = title;
+            document.getElementById('lightbox-desc').innerText = desc;
+            document.getElementById('lightbox').classList.remove('hidden');
+            document.getElementById('lightbox').classList.add('flex');
+        }
 
-            // 1. Mobile Navigation Drawer Toggle
-            const mobileBtn = document.getElementById('mobile-menu-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const iconOpen = document.getElementById('menu-icon-open');
-            const iconClose = document.getElementById('menu-icon-close');
-            const mobileLinks = document.querySelectorAll('.mobile-link');
-
-            mobileBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-                iconOpen.classList.toggle('hidden');
-                iconClose.classList.toggle('hidden');
-            });
-
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.add('hidden');
-                    iconOpen.classList.remove('hidden');
-                    iconClose.classList.add('hidden');
-                });
-            });
-
-            // 2. Sticky Navbar Scroll Effect
-            const navContainer = document.getElementById('nav-container');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 40) {
-                    navContainer.classList.add('bg-brand-navy/90', 'shadow-2xl');
-                    navContainer.classList.remove('bg-brand-navy/60');
-                } else {
-                    navContainer.classList.remove('bg-brand-navy/90', 'shadow-2xl');
-                    navContainer.classList.add('bg-brand-navy/60');
-                }
-            });
-
-            // 3. Scroll Reveal Animation Observer
-            const revealElements = document.querySelectorAll('.reveal');
-            const revealObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    }
-                });
-            }, { threshold: 0.12 });
-
-            revealElements.forEach(el => revealObserver.observe(el));
-
-            // 4. Gallery Category Filtering
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            const galleryItems = document.querySelectorAll('.gallery-item');
-
-            filterButtons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    filterButtons.forEach(b => {
-                        b.classList.remove('bg-amber-500', 'text-brand-navy');
-                        b.classList.add('bg-white/10', 'text-slate-200');
-                    });
-                    btn.classList.remove('bg-white/10', 'text-slate-200');
-                    btn.classList.add('bg-amber-500', 'text-brand-navy');
-
-                    const filterValue = btn.getAttribute('data-filter');
-
-                    galleryItems.forEach(item => {
-                        const category = item.getAttribute('data-category');
-                        if (filterValue === 'all' || category === filterValue) {
-                            item.style.display = 'block';
-                        } else {
-                            item.style.display = 'none';
-                        }
-                    });
-                });
-            });
-
-            // 5. Lightbox Modal Functionality
-            const modal = document.getElementById('lightbox-modal');
-            const closeModalBtn = document.getElementById('close-lightbox');
-
-            galleryItems.forEach((item, index) => {
-                item.addEventListener('click', () => {
-                    activeModalCardIndex = index;
-                    populateModal(index);
-
-                    modal.classList.remove('hidden');
-                    modal.classList.add('flex');
-                    document.body.style.overflow = 'hidden';
-                });
-            });
-
-            const closeLightbox = () => {
-                modal.classList.add('hidden');
-                modal.classList.remove('flex');
-                document.body.style.overflow = '';
-                activeModalCardIndex = null;
-            };
-
-            closeModalBtn.addEventListener('click', closeLightbox);
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) closeLightbox();
-            });
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-                    closeLightbox();
-                }
-            });
-        });
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('flex');
+            document.getElementById('lightbox').classList.add('hidden');
+        }
     </script>
 </body>
 </html>
